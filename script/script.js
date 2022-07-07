@@ -166,8 +166,8 @@ const app = new Vue({
         ]
     },
     methods : {
-        addingImgName(element){
-            let fullName = `./img/avatar${element.avatar}.jpg`;
+        addingImgName(scrollingIndex){
+            let fullName = `./img/avatar${this.contacts[scrollingIndex].avatar}.jpg`;
             return fullName;
         },
     }

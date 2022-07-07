@@ -42,10 +42,11 @@ img{
 .my-txt-color-icon{
     color: var(--txt-color-grey);
 }
-.my-txt-color-icon > :hover {
+.my-txt-color-icon > :hover,
+.my-txt-color-icon-chat :hover {
     cursor: pointer;
     color: var(--bg-green);
-    transition: color 0.5s ease-in-out;
+    transition: color 0.5s;
 }
 .my-banner{
     background-color: var(--bg-light-blue);
@@ -68,9 +69,11 @@ img{
     background-color: var(--bg-light-grey);
 }
 .my-input{
+    padding-left: 4vw;
+}
+.my-input-style{
     width: 100%;
     border: none;
-    padding-left: 4vw;
 }
 .my-search{
     left: 1.5rem;
@@ -84,4 +87,27 @@ img{
 }
 .my-card{
     height: 83px;
+}
+.txt-cont{
+    line-height: 1;
+}
+.chat-container{
+    height: calc(93vh - 120px);
+    background-image: url("../img/mine.jpg");
+}
+.active{
+    background-color: rgb(233,235,235);
+}
+.my-footer-chat{
+    background-color: rgb(243,238,234);
+    height: 60px;
+}
+.my-txt-color-icon-chat{
+    color: rgb(107,115,118);
+}
+.my-chat-style{
+    width: 100%;
+    border: 0;
+    height: 35px;
+    border-radius: 5px;
 }
