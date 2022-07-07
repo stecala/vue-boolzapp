@@ -51,7 +51,7 @@ img{
     background-color: var(--bg-light-blue);
     height: 75px;
 }
-.my-banner :hover{
+.my-cursor :hover{
     cursor: pointer;
 }
 .bell-container{
@@ -75,4 +75,13 @@ img{
 .my-search{
     left: 1.5rem;
     top: 20%;
+}
+.my-overflow{
+    overflow-y: scroll;
+}
+.my-height-name{
+    height: calc(93vh - 60px - 75px - 40px);
+}
+.my-card{
+    height: 83px;
 }

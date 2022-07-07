@@ -19,6 +19,7 @@
     <div id="app" class="container-lg mx-auto pt-4">
         <div class="row my-row-container">
             <div class="col-5 border-end">
+                <!--  User zone  -->
                 <div class="row my-head-row">
                     <div class="col-10 d-flex align-items-center p-2 ">
                         <div class="img-cont">
@@ -38,7 +39,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row my-banner">
+                <!-- Banner zone -->
+                <div class="row my-banner my-cursor">
                     <div class="col-12 px-3 py-1 d-flex align-items-center">
                         <div class="bell-container img-cont justify-content-center align-items-center d-flex">
                             <i class="fa-solid fa-bell-slash"></i>
@@ -53,11 +55,33 @@
                         </div>
                     </div>
                 </div>
+                <!-- Search zone -->
                 <div class="row">
                     <div class="col-12 p-2 my-input-container position-relative">
                         <input type="text" class="my-input" placeholder="cerca o inizia una nuova chat">
                         <div class="position-absolute my-search my-txt-color-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat boxes -->
+                <div class="row my-overflow my-height-name">
+                    <div class="col-12 my-card my-cursor" v-for="(element , index) in contacts">
+                        <div class="row px-4 py-2 border-top d-flex align-items-center">
+                            <div class="col-2 ">
+                                <img :src="addingImgName(element)" alt="">
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h5>{{element.name}}</h5>
+                                    </div>
+                                    <div class="col-2">
+                                        <p class="my-txt-size ">12:00</p>
+                                    </div>
+                                </div>
+                                <p class=" my-txt-size">Ultimo messaggio inviato</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -165,5 +165,11 @@ const app = new Vue({
             }
         ]
     },
+    methods : {
+        addingImgName(element){
+            let fullName = `./img/avatar${element.avatar}.jpg`;
+            return fullName;
+        },
+    }
 
 })
