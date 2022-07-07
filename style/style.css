@@ -14,7 +14,8 @@ img{
     --bg-white : rgb(255,255,255);
     --bg-grey-deep : rgb(219,219,211);
     --txt-color-grey : rgb(177,177,177);
-    --bg-light-blue : rgb(142,218,252); 
+    --bg-light-blue : rgb(142,218,252);
+    --bg-light-grey : rgb(250,250,250); 
 }
 .bg-color-grey{
     background-color: var(--bg-grey-deep);
@@ -62,4 +63,16 @@ img{
 .my-txt-size{
     font-size: 0.7rem;
     opacity: 0.6;
+}
+.my-input-container{
+    background-color: var(--bg-light-grey);
+}
+.my-input{
+    width: 100%;
+    border: none;
+    padding-left: 4vw;
+}
+.my-search{
+    left: 1.5rem;
+    top: 20%;
 }
