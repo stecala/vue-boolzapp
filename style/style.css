@@ -6,27 +6,60 @@
 img{
     width: 100%;
     object-fit: cover;
+    border-radius: 50%;
+}
+:root{
+    --bg-grey : rgb(234,234,234);
+    --bg-green : rgb(0,150,136);
+    --bg-white : rgb(255,255,255);
+    --bg-grey-deep : rgb(219,219,211);
+    --txt-color-grey : rgb(177,177,177);
+    --bg-light-blue : rgb(142,218,252); 
+}
+.bg-color-grey{
+    background-color: var(--bg-grey-deep);
 }
 .green-band{
     width: 100%;
     height: 140px;
-    background-color: rgb(0,150,136);
+    background-color: var(--bg-green);
+    z-index: -1;
 }
-.grey-band{
-    background-color: rgb(219,219,211);
-    width: 100%;
-    height: calc(100vh - 140px);
+
+.my-row-container{
+    height: 93vh;
+    background-color: var(--bg-white);
 }
-.my-container{
-   top: 10%;
-   left: 23.5%;
-}
-.my-row{
-    height: 85vh;
-    background-color: white;
+.my-head-row{
+    background-color: var(--bg-grey);
+    height: 60px;
 }
 .img-cont{
-    border-radius: 50%;
     height: 40px;
     width: 40px;
+}
+.my-txt-color-icon{
+    color: var(--txt-color-grey);
+}
+.my-txt-color-icon > :hover {
+    cursor: pointer;
+    color: var(--bg-green);
+    transition: color 0.5s ease-in-out;
+}
+.my-banner{
+    background-color: var(--bg-light-blue);
+    height: 75px;
+}
+.my-banner :hover{
+    cursor: pointer;
+}
+.bell-container{
+    background-color: var(--bg-white);
+    color: var(--bg-light-blue);
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+.my-txt-size{
+    font-size: 0.7rem;
+    opacity: 0.6;
 }
