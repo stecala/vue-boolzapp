@@ -171,6 +171,10 @@ const app = new Vue({
             let fullName = `./img/avatar${this.contacts[scrollingIndex].avatar}.jpg`;
             return fullName;
         },
+        changeCurrentIndex(index){
+            this.currentIndex = index;
+        }
     }
+
 
 })

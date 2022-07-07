@@ -66,7 +66,7 @@
                 </div>
                 <!-- Chat boxes -->
                 <div class="row my-overflow my-height-name">
-                    <div class="col-12 my-card my-cursor" v-for="(element , index) in contacts">
+                    <div class="col-12 my-card my-cursor" v-for="(element , index) in contacts" @click="changeCurrentIndex(index)">
                         <div class="row px-4 py-2 border-top d-flex align-items-center">
                             <div class="col-2 ">
                                 <img :src="addingImgName(index)" alt="">
@@ -113,8 +113,9 @@
                     </div>
                 </div>
                 <!-- Main chat -->
-                <div class="row chat-container my-overflow p-5 d-flex">
-                    <div class="col-5" v-for="(singleMsg ,  index) in contacts[currentIndex].messages.singleMsg" >
+                <div class="row chat-container my-overflow p-5 d-flex flex-column ">
+                    <div class="col-5 mt-3 justify-self-start" v-for="(singleMsg ,  index) in contacts[currentIndex].messages" 
+                    :class="{ 'my-sent' : singleMsg.status == 'sent' , received : singleMsg.status == 'received' }" >
                         <span>{{singleMsg.message}}</span>
                     </div>
                 </div>

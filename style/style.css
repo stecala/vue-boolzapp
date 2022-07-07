@@ -111,9 +111,11 @@ img{
     height: 35px;
     border-radius: 5px;
 }
-.sent{
+.my-sent{
     background-color: rgb(213,249,186);
+    align-self: end;
 }
 .received{
     background-color: var(--bg-white);
+    align-self: start;
 }
