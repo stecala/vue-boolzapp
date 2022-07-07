@@ -165,6 +165,7 @@ const app = new Vue({
             }
         ],
         currentIndex : 0,
+        newMsgToAdd : '',
     },
     methods : {
         addingImgName(scrollingIndex){
@@ -178,7 +179,14 @@ const app = new Vue({
             let date = dateToSlice.split(" ");
             let dateNoSec = date[1].split(":")
             return dateNoSec[0] + ':' + dateNoSec[1];
-        }
+        },
+        addMessage(){
+            if(!this.newMsgToAdd == ''){
+            this.contacts[this.currentIndex].messages.push({date:'10/01/2020 15:51:00', message: this.newMsgToAdd, status : 'sent'})
+            this.newMsgToAdd=''
+            }
+        },
+
     }
 
 
