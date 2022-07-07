@@ -8,6 +8,11 @@ img{
     object-fit: cover;
     border-radius: 50%;
 }
+input:focus{
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+}
 :root{
     --bg-grey : rgb(234,234,234);
     --bg-green : rgb(0,150,136);
@@ -118,4 +123,14 @@ img{
 .received{
     background-color: var(--bg-white);
     align-self: start;
+}
+.my-popup{
+    padding: 10px;
+    border-radius: 10px;
+}
+.my-hour{
+    top: 65%;
+    right: 2%;
+    font-size: 0.7rem;
+    color: var(--txt-color-grey);
 }

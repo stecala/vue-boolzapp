@@ -91,10 +91,10 @@
                 <div class="row my-head-row">
                     <div class="col-10 d-flex align-items-center p-2 ">
                         <div class="img-cont">
-                            <img :src="addingImgName(0)" alt="your avatar">
+                            <img :src="addingImgName(currentIndex)" :alt="contacts[currentIndex].name">
                         </div>
                         <div class="d-flex align-items-center">
-                            <h5 class="name-cont ms-1 fs-5 txt-cont">{{contacts[0].name}}<br>
+                            <h5 class="name-cont ms-1 fs-5 txt-cont">{{contacts[currentIndex].name}}<br>
                                 <span class="my-txt-size">Ultimo accesso oggi alle 12:00</span>
                             </h5>
                         </div>
@@ -113,10 +113,11 @@
                     </div>
                 </div>
                 <!-- Main chat -->
-                <div class="row chat-container my-overflow p-5 d-flex flex-column ">
-                    <div class="col-5 mt-3 justify-self-start" v-for="(singleMsg ,  index) in contacts[currentIndex].messages" 
+                <div class="row chat-container my-overflow p-5 d-flex flex-column flex-nowrap ">
+                    <div class="col-5 mt-3 justify-self-start my-popup position-relative" v-for="(singleMsg ,  index) in contacts[currentIndex].messages" 
                     :class="{ 'my-sent' : singleMsg.status == 'sent' , received : singleMsg.status == 'received' }" >
                         <span>{{singleMsg.message}}</span>
+                        <span class="position-absolute my-hour">{{getHour(singleMsg.date)}}</span>
                     </div>
                 </div>
                 <!-- Input chat -->

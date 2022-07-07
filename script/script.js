@@ -173,6 +173,11 @@ const app = new Vue({
         },
         changeCurrentIndex(index){
             this.currentIndex = index;
+        },
+        getHour(dateToSlice){
+            let date = dateToSlice.split(" ");
+            let dateNoSec = date[1].split(":")
+            return dateNoSec[0] + ':' + dateNoSec[1];
         }
     }
 
