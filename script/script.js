@@ -163,7 +163,8 @@ const app = new Vue({
                     }
                 ],
             }
-        ]
+        ],
+        currentIndex : 0,
     },
     methods : {
         addingImgName(scrollingIndex){

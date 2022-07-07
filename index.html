@@ -113,9 +113,10 @@
                     </div>
                 </div>
                 <!-- Main chat -->
-                <div class="row chat-container my-overflow p-5">
-
-
+                <div class="row chat-container my-overflow p-5 d-flex">
+                    <div class="col-5" v-for="(singleMsg ,  index) in contacts[currentIndex].messages.singleMsg" >
+                        <span>{{singleMsg.message}}</span>
+                    </div>
                 </div>
                 <!-- Input chat -->
                 <div class="row px-3 py-1 my-footer-chat d-flex align-items-center">

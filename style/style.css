@@ -111,3 +111,9 @@ img{
     height: 35px;
     border-radius: 5px;
 }
+.sent{
+    background-color: rgb(213,249,186);
+}
+.received{
+    background-color: var(--bg-white);
+}
