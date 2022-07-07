@@ -186,8 +186,14 @@ const app = new Vue({
             this.newMsgToAdd=''
             }
         },
-
+        lastMsg(index){
+            let lengthArray = (this.contacts[index].messages.length) - 1
+            return this.contacts[index].messages[lengthArray].message
+        }
     }
 
 
 })
+
+
+//! aggiungere ora di accesso = ora ultimo messaggio
