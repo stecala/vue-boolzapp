@@ -25,7 +25,7 @@
                         <div class="img-cont">
                             <img src="./img/avatar_io.jpg" alt="your avatar">
                         </div>
-                        <span class="name-cont ms-1">Sofia</span>
+                        <h5 class="name-cont ms-1">Sofia</h5>
                     </div>
                     <div class="col-2 d-flex align-items-center my-txt-color-icon justify-content-between text-center">
                         <div>
@@ -58,7 +58,7 @@
                 <!-- Search zone -->
                 <div class="row">
                     <div class="col-12 p-2 my-input-container position-relative">
-                        <input type="text" class="my-input" placeholder="cerca o inizia una nuova chat">
+                        <input type="text" class="my-input my-input-style" placeholder="cerca o inizia una nuova chat">
                         <div class="position-absolute my-search my-txt-color-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
@@ -69,7 +69,7 @@
                     <div class="col-12 my-card my-cursor" v-for="(element , index) in contacts">
                         <div class="row px-4 py-2 border-top d-flex align-items-center">
                             <div class="col-2 ">
-                                <img :src="addingImgName(element)" alt="">
+                                <img :src="addingImgName(index)" alt="">
                             </div>
                             <div class="col-10">
                                 <div class="row">
@@ -86,7 +86,50 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7"></div>
+            <div class="col-7">
+                <!-- Chat header -->
+                <div class="row my-head-row">
+                    <div class="col-10 d-flex align-items-center p-2 ">
+                        <div class="img-cont">
+                            <img :src="addingImgName(0)" alt="your avatar">
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <h5 class="name-cont ms-1 fs-5 txt-cont">{{contacts[0].name}}<br>
+                                <span class="my-txt-size">Ultimo accesso oggi alle 12:00</span>
+                            </h5>
+                        </div>
+                        
+                    </div>
+                    <div class="col-2 d-flex align-items-center my-txt-color-icon justify-content-between text-center">
+                        <div>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-paperclip"></i>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main chat -->
+                <div class="row chat-container my-overflow p-5">
+
+
+                </div>
+                <!-- Input chat -->
+                <div class="row px-3 py-1 my-footer-chat d-flex align-items-center">
+                    <div class="col-1 my-txt-color-icon-chat fs-4">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <div class="col-10">
+                        <input type="text" class="my-chat-style ps-2" placeholder="Scrivi un messaggio">
+                    </div>
+                    <div class="col-1 my-txt-color-icon-chat fs-4 text-end">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./script/script.js"></script>
