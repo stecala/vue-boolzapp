@@ -148,8 +148,12 @@ input:focus{
     right:2.5%;
     z-index: 2;
     width: 200px;
-    height: 100px;
+    height: 75px;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px rgb(158, 158, 158);
-    
+    box-shadow: 5px 5px 5px rgb(158, 158, 158);   
+}
+.my-delete:hover{
+    background-color: rgb(255, 200, 200);
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
 }

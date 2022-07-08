@@ -118,10 +118,10 @@
                     :class="{ 'my-sent' : singleMsg.status == 'sent' , received : singleMsg.status == 'received' }" >
                         <span>{{singleMsg.message}}</span>
                         <span class="position-absolute my-hour">{{getHourFromArray(singleMsg.date)}}</span>
-                        <span class="my-arrow-down my-cursor" @click="showingInfoMessage"><i class="fa-solid fa-angle-down"></i></span>
-                        <div class="my-delete-info-zone p-3"  v-if="showInfo">
-                            <div>Info messaggio</div>
-                            <div>Elimina messaggio</div>
+                        <span class="my-arrow-down my-cursor" @click="showingInfoMessage(index)"><i class="fa-solid fa-angle-down"></i></span>
+                        <div class="my-delete-info-zone"  v-if="isActive(index)">
+                            <div class="px-3 py-2">Info messaggio</div>
+                            <div class="mt-2 my-delete px-3 my-cursor" @click="messageToDelete(index)">Elimina messaggio</div>
                         </div> 
                     </div>
                 </div>

@@ -168,7 +168,10 @@ const app = new Vue({
         newMsgToAdd : '',
         answerToAdd : 'OK',
         userSearch : '',
-        showInfo : false,
+        showInfo : {
+            indexContact : null,
+            indexMessage : null,
+        },
     },
     methods : {
         addingImgName(scrollingIndex){
@@ -181,7 +184,7 @@ const app = new Vue({
             for(let i = 0; i < this.contacts.length ; i++ ){
                 this.contacts[i].visible = true
             }
-            this.showInfo = false
+            this.showInfo = {}
         },
         getHourFromArray(dateToSlice){
             let date = dateToSlice.split(" ");
@@ -227,8 +230,22 @@ const app = new Vue({
                console.log( this.contacts[i].visible)
             }
         },
-        showingInfoMessage(){
-            this.showInfo = !this.showInfo;
+        showingInfoMessage(index){
+            if(this.showInfo.indexContact== this.currentIndex && this.showInfo.indexMessage == index){
+                this.showInfo = {}
+            }
+            else{
+            this.showInfo = {
+                indexContact : this.currentIndex,
+                indexMessage : index,
+            }}
+        },
+        isActive(index){
+            return this.showInfo.indexContact === this.currentIndex && this.showInfo.indexMessage===index
+        },
+        messageToDelete(index){
+            this.contacts[this.currentIndex].messages.splice(index,1)
+            this.showInfo = {}
         },
     }
 })
