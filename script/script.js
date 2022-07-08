@@ -192,12 +192,17 @@ const app = new Vue({
             let formattedDate =`${arrayDate[0]}${arrayDate[1]}`
             return formattedDate
         },
+
         addMessage(message , choice){
             if(this.newMsgToAdd !== ''){
+
                 this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: message, status : choice})
+
+                setTimeout(()=>{
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.answerToAdd, status : 'received'})
+                },3000)
             }
-            setTimeout(this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.answerToAdd, status : 'received'}),1000
-            )
+            
             this.newMsgToAdd=''
         },
         lastMsg(index){
@@ -208,10 +213,10 @@ const app = new Vue({
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].date
         },
-        searchingUser(search){
-            this.userSearch = this.userSearch.toLowerCase()
+        searchingUser(){
+           let newString = this.userSearch.toLowerCase()
             for(let i = 0; i < this.contacts.length ; i++ ){
-               if(this.contacts[i].name.toLowerCase().includes(search)){
+               if(this.contacts[i].name.toLowerCase().includes(newString)){
                     this.contacts[i].visible = true
                }
                else{
