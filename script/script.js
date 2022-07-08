@@ -175,24 +175,36 @@ const app = new Vue({
         changeCurrentIndex(index){
             this.currentIndex = index;
         },
-        getHour(dateToSlice){
+        getHourFromArray(dateToSlice){
             let date = dateToSlice.split(" ");
             let dateNoSec = date[1].split(":")
+            console.log({dateToSlice, date, dateNoSec})
             return dateNoSec[0] + ':' + dateNoSec[1];
         },
+        getDate(){
+            let currentDate = new Date().toLocaleString()
+            let arrayDate = currentDate.split(',')
+            let formattedDate =`${arrayDate[0]}${arrayDate[1]}`
+            console.log(formattedDate)
+            return formattedDate
+        },
         addMessage(){
-            if(!this.newMsgToAdd == ''){
-            this.contacts[this.currentIndex].messages.push({date:'10/01/2020 15:51:00', message: this.newMsgToAdd, status : 'sent'})
+            if(this.newMsgToAdd !== ''){
+            console.log(this.getDate())
+            console.log({date: this.getDate(), message: this.newMsgToAdd }) 
+            this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.newMsgToAdd, status : 'sent'})
             this.newMsgToAdd=''
             }
         },
         lastMsg(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].message
-        }
+        },
+        lastDate(index){
+            let lengthArray = (this.contacts[index].messages.length) - 1
+            return this.contacts[index].messages[lengthArray].date
+           }
     }
-
-
 })
 
 
