@@ -191,6 +191,9 @@ const app = new Vue({
             if(this.newMsgToAdd !== ''){
                 this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: message, status : choice})
             }
+            setTimeout(this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.answerToAdd, status : 'received'}),1000
+            )
+            this.newMsgToAdd=''
         },
         lastMsg(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
@@ -199,12 +202,6 @@ const app = new Vue({
         lastDate(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].date
-           },
-        timeoutForAnswer() {
-            setTimeout(() => {
-                this.addMessage(this.answerToAdd , 'received');
-            }, 500);
-            this.newMsgToAdd=''
         },
     }
 })
