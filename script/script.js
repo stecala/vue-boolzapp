@@ -166,6 +166,7 @@ const app = new Vue({
         ],
         currentIndex : 0,
         newMsgToAdd : '',
+        answerToAdd : 'OK',
     },
     methods : {
         addingImgName(scrollingIndex){
@@ -178,22 +179,17 @@ const app = new Vue({
         getHourFromArray(dateToSlice){
             let date = dateToSlice.split(" ");
             let dateNoSec = date[1].split(":")
-            console.log({dateToSlice, date, dateNoSec})
             return dateNoSec[0] + ':' + dateNoSec[1];
         },
         getDate(){
             let currentDate = new Date().toLocaleString()
             let arrayDate = currentDate.split(',')
             let formattedDate =`${arrayDate[0]}${arrayDate[1]}`
-            console.log(formattedDate)
             return formattedDate
         },
-        addMessage(){
+        addMessage(message , choice){
             if(this.newMsgToAdd !== ''){
-            console.log(this.getDate())
-            console.log({date: this.getDate(), message: this.newMsgToAdd }) 
-            this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.newMsgToAdd, status : 'sent'})
-            this.newMsgToAdd=''
+                this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: message, status : choice})
             }
         },
         lastMsg(index){
@@ -203,9 +199,13 @@ const app = new Vue({
         lastDate(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].date
-           }
+           },
+        timeoutForAnswer() {
+            setTimeout(() => {
+                this.addMessage(this.answerToAdd , 'received');
+            }, 500);
+            this.newMsgToAdd=''
+        },
     }
 })
 
-
-//! aggiungere ora di accesso = ora ultimo messaggio
