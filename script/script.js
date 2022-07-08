@@ -168,6 +168,7 @@ const app = new Vue({
         newMsgToAdd : '',
         answerToAdd : 'OK',
         userSearch : '',
+        showInfo : false,
     },
     methods : {
         addingImgName(scrollingIndex){
@@ -180,6 +181,7 @@ const app = new Vue({
             for(let i = 0; i < this.contacts.length ; i++ ){
                 this.contacts[i].visible = true
             }
+            this.showInfo = false
         },
         getHourFromArray(dateToSlice){
             let date = dateToSlice.split(" ");
@@ -224,7 +226,10 @@ const app = new Vue({
                }
                console.log( this.contacts[i].visible)
             }
-        }
+        },
+        showingInfoMessage(){
+            this.showInfo = !this.showInfo;
+        },
     }
 })
 
