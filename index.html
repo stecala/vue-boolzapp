@@ -58,15 +58,15 @@
                 <!-- Search zone -->
                 <div class="row">
                     <div class="col-12 p-2 my-input-container position-relative">
-                        <input type="text" class="my-input my-input-style" placeholder="cerca o inizia una nuova chat">
+                        <input type="text" class="my-input my-input-style" placeholder="cerca o inizia una nuova chat" @keyup="searchingUser(userSearch)" v-model="userSearch">
                         <div class="position-absolute my-search my-txt-color-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                     </div>
                 </div>
                 <!-- Chat boxes -->
-                <div class="row my-overflow my-height-name">
-                    <div class="col-12 my-card my-cursor" v-for="(element , index) in contacts" @click="changeCurrentIndex(index)">
+                <div class="row my-overflow my-height-name align-content-start">
+                    <div class="col-12 my-card my-cursor" v-for="(element , index) in contacts" @click="changeCurrentIndex(index)" v-if="(contacts[index].visible)">
                         <div class="row px-4 py-2 border-top d-flex align-items-center">
                             <div class="col-2 ">
                                 <img :src="addingImgName(index)" alt="">

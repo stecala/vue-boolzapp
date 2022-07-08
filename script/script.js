@@ -167,6 +167,7 @@ const app = new Vue({
         currentIndex : 0,
         newMsgToAdd : '',
         answerToAdd : 'OK',
+        userSearch : '',
     },
     methods : {
         addingImgName(scrollingIndex){
@@ -174,7 +175,11 @@ const app = new Vue({
             return fullName;
         },
         changeCurrentIndex(index){
-            this.currentIndex = index;
+            this.currentIndex = index
+            this.userSearch = ''
+            for(let i = 0; i < this.contacts.length ; i++ ){
+                this.contacts[i].visible = true
+            }
         },
         getHourFromArray(dateToSlice){
             let date = dateToSlice.split(" ");
@@ -203,6 +208,18 @@ const app = new Vue({
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].date
         },
+        searchingUser(search){
+            this.userSearch = this.userSearch.toLowerCase()
+            for(let i = 0; i < this.contacts.length ; i++ ){
+               if(this.contacts[i].name.toLowerCase().includes(search)){
+                    this.contacts[i].visible = true
+               }
+               else{
+                    this.contacts[i].visible = false
+               }
+               console.log( this.contacts[i].visible)
+            }
+        }
     }
 })
 
