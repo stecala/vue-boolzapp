@@ -174,6 +174,7 @@ const app = new Vue({
         emojisArray: ['😀', '😂', '😍', '😊', '😁', '😆', '😇', '😉', '😌', '😘', '😚', '😋', '😜', '😝', '😛', '😳', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😈', '😉', '😊', '😋', '😌', '😍', '😎', '😏', '😐', '😑', '😒', '😓', '😔', '😕', '😖', '😗', '😘', '😙', '😚', '😛', '😜', '😝', '😞', '😟', '😠', '😡', '😢', '😣', '😤', '😥', '😦', '😧', '😨', '😩', '😪', '😫', '😬', '😭', '😮', '😯', '😰', '😱', '😲', '😳', '😴', '😵', '😶', '😷','🐸'],
         booleanEmoji : false,
         booleanSend : false,
+        booleanInfo : false,
     },
     methods : {
         //! this function add the local path to find the profile img
@@ -253,8 +254,13 @@ const app = new Vue({
         },
         //! In this function you can delete a message by its index
         messageToDelete(index){
-            this.contacts[this.currentIndex].messages.splice(index,1)
-            this.showInfo = {}
+            if(this.contacts[this.currentIndex].messages.length != 1){
+                this.contacts[this.currentIndex].messages.splice(index,1)
+                this.showInfo = {}
+            }
+            else{
+                alert('Non puoi eliminare l\'ultimo messaggio!')
+            }
         },
         //! A sort of chat bot
         dialogue(newMessage){
@@ -310,7 +316,7 @@ const app = new Vue({
             else{
                 this.booleanSend = false
             }
-        } 
+        },
     }
 })
 

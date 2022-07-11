@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <!-- Main chat -->
-                <div class="row chat-container my-overflow p-5 d-flex flex-column flex-nowrap ">
+                <div class="row chat-container my-overflow p-5 d-flex flex-column flex-nowrap">
                     <div class="col-5 mt-3 my-popup position-relative" v-for="(singleMsg ,  index) in contacts[currentIndex].messages" 
                     :class="{ 'my-sent' : singleMsg.status == 'sent' , received : singleMsg.status == 'received' }" >
                         <span>{{singleMsg.message}}</span>
@@ -122,7 +122,7 @@
                         <div class="my-delete-info-zone"  v-if="isActive(index)">
                             <div class="px-3 py-2">Info messaggio</div>
                             <div class="mt-2 my-delete px-3 my-cursor" @click="messageToDelete(index)">Elimina messaggio</div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 <!-- Input chat -->
@@ -138,9 +138,9 @@
                     <div class="col-10">
                         <input type="text" class="my-chat-style ps-2" placeholder="Scrivi un messaggio" v-model.trim="newMsgToAdd" @keyup.enter="addMessage(newMsgToAdd , 'sent');  chatToTheTop()">
                     </div>
-                    <div class="col-1 my-txt-color-icon-chat fs-4 text-end" v-model="changeStatusSend()">
-                        <i class="fa-solid fa-microphone" v-if="(booleanSend===false)"></i>
-                        <i class="fa-regular fa-paper-plane" v-else></i>
+                    <div class="col-1 my-txt-color-icon-chat fs-4 text-end" :value="changeStatusSend()">
+                        <i class="fa-solid fa-microphone" v-if="(booleanSend === false)"></i>
+                        <i class="fa-regular fa-paper-plane" v-else @click="addMessage(newMsgToAdd, 'sent')"></i>
                     </div>
                 </div>
             </div>
