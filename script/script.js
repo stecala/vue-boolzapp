@@ -214,8 +214,8 @@ const app = new Vue({
                     this.dialogue(this.lastMsg(this.currentIndex))
                 },1000)
                 this.newMsgToAdd=''
+                this.booleanEmoji = false;
             }
-            
         },
         //! this function return you the position of the last message 
         lastMsg(index){
@@ -270,6 +270,7 @@ const app = new Vue({
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'ciao!', status : 'received'});
                     break;
                 case 'come va?':
+                case 'come va':
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'tutto bene, tu?', status : 'received'});
                     break;
                 case 'bene' :
@@ -286,6 +287,12 @@ const app = new Vue({
                     break;
                 case 'si':
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.emojisArray[0], status : 'received'});
+                    break;
+                case 'no':
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.emojisArray[36], status : 'received'});
+                    break;
+                case 'ehi':
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'ehilà', status : 'received'});
                     break;
                 default : 
                     console.log(newMessage);
