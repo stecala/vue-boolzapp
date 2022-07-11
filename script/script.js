@@ -166,7 +166,6 @@ const app = new Vue({
         ],
         currentIndex : 0,
         newMsgToAdd : '',
-        answerToAdd : 'OK',
         userSearch : '',
         showInfo : {
             indexContact : null,
@@ -202,10 +201,10 @@ const app = new Vue({
             if(this.newMsgToAdd !== ''){
 
                 this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: message, status : choice})
-
+                console.log(this.newMsgToAdd)
                 setTimeout(()=>{
-                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.answerToAdd, status : 'received'})
-                },3000)
+                    this.dialogue()
+                },1000)
             }
             
             this.newMsgToAdd=''
@@ -246,6 +245,25 @@ const app = new Vue({
         messageToDelete(index){
             this.contacts[this.currentIndex].messages.splice(index,1)
             this.showInfo = {}
+        },
+        dialogue(){
+            switch (this.newMsgToAdd){
+                case 'ciao' : 
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'ciao!', status : 'received'});
+                    break;
+                case 'come va?':
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'tutto bene, tu?', status : 'received'});
+                    break;
+                case 'bene' :
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'bene!', status : 'received'});
+                    break;
+                case 'male' :
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'mi dispiace', status : 'received'});
+                    break;
+                default : 
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'OK!', status : 'received'});
+                    break;
+            }
         },
     }
 })
