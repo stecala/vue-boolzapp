@@ -173,10 +173,12 @@ const app = new Vue({
         },
     },
     methods : {
+        //! this function add the local path to find the profile img
         addingImgName(scrollingIndex){
             let fullName = `./img/avatar${this.contacts[scrollingIndex].avatar}.jpg`;
             return fullName;
         },
+        //! this function tranform the index of For in a const and reset 
         changeCurrentIndex(index){
             this.currentIndex = index
             this.userSearch = ''
@@ -185,18 +187,20 @@ const app = new Vue({
             }
             this.showInfo = {}
         },
+        //! this function tranform times in format HH:MM
         getHourFromArray(dateToSlice){
             let date = dateToSlice.split(" ");
             let dateNoSec = date[1].split(":")
             return dateNoSec[0] + ':' + dateNoSec[1];
         },
+        //! this function create a new Date and format it in DD/MM/YYYY
         getDate(){
             let currentDate = new Date().toLocaleString()
             let arrayDate = currentDate.split(',')
             let formattedDate =`${arrayDate[0]}${arrayDate[1]}`
             return formattedDate
         },
-
+        //! this function push a new object inside of the array and set the time out for the answer
         addMessage(message , choice){
             if(this.newMsgToAdd !== ''){
 
@@ -209,14 +213,17 @@ const app = new Vue({
             }
             
         },
+        //! this function return you the position of the last message 
         lastMsg(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].message
         },
+        //! this function return you the position of the last date 
         lastDate(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
             return this.contacts[index].messages[lengthArray].date
         },
+        //! this function change the status of visibility of unsearched user
         searchingUser(){
            let newString = this.userSearch.toLowerCase()
             for(let i = 0; i < this.contacts.length ; i++ ){
@@ -226,7 +233,6 @@ const app = new Vue({
                else{
                     this.contacts[i].visible = false
                }
-               console.log( this.contacts[i].visible)
             }
         },
         showingInfoMessage(index){
@@ -242,10 +248,12 @@ const app = new Vue({
         isActive(index){
             return this.showInfo.indexContact === this.currentIndex && this.showInfo.indexMessage===index
         },
+        //! In this function you can delete a message by its index
         messageToDelete(index){
             this.contacts[this.currentIndex].messages.splice(index,1)
             this.showInfo = {}
         },
+        //! A sort of chat bot
         dialogue(newMessage){
             switch (newMessage){
                 case 'ciao' : 
@@ -276,6 +284,7 @@ const app = new Vue({
                     break;
             }
         },
+        //! the last message you write push the chat box to the top of its container
         chatToTheTop() {
             let  currentObject= this.contacts[this.currentIndex];
             this.contacts.splice(this.currentIndex, 1);
