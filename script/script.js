@@ -201,13 +201,13 @@ const app = new Vue({
             if(this.newMsgToAdd !== ''){
 
                 this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: message, status : choice})
-                console.log(this.newMsgToAdd)
+
                 setTimeout(()=>{
-                    this.dialogue()
+                    this.dialogue(this.lastMsg(this.currentIndex))
                 },1000)
+                this.newMsgToAdd=''
             }
             
-            this.newMsgToAdd=''
         },
         lastMsg(index){
             let lengthArray = (this.contacts[index].messages.length) - 1
@@ -246,9 +246,10 @@ const app = new Vue({
             this.contacts[this.currentIndex].messages.splice(index,1)
             this.showInfo = {}
         },
-        dialogue(){
-            switch (this.newMsgToAdd){
+        dialogue(newMessage){
+            switch (newMessage){
                 case 'ciao' : 
+                    console.log(newMessage);
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'ciao!', status : 'received'});
                     break;
                 case 'come va?':
@@ -260,11 +261,27 @@ const app = new Vue({
                 case 'male' :
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'mi dispiace', status : 'received'});
                     break;
+                case 'mi presti dei soldi?':
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'dai passami l\'iban', status : 'received'});
+                    break;
+                case 'stasera cena fuori?':
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'daje, asian fusion?', status : 'received'});
+                    break;
+                case 'si':
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: ':D', status : 'received'});
+                    break;
                 default : 
+                    console.log(newMessage);
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'OK!', status : 'received'});
                     break;
             }
         },
+        chatToTheTop() {
+            let  currentObject= this.contacts[this.currentIndex];
+            this.contacts.splice(this.currentIndex, 1);
+            this.contacts.unshift(currentObject);
+            this.currentIndex = 0;
+        }, 
     }
 })
 
