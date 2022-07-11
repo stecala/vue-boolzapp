@@ -171,6 +171,9 @@ const app = new Vue({
             indexContact : null,
             indexMessage : null,
         },
+        emojisArray: ['😀', '😂', '😍', '😊', '😁', '😆', '😇', '😉', '😌', '😘', '😚', '😋', '😜', '😝', '😛', '😳', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😈', '😉', '😊', '😋', '😌', '😍', '😎', '😏', '😐', '😑', '😒', '😓', '😔', '😕', '😖', '😗', '😘', '😙', '😚', '😛', '😜', '😝', '😞', '😟', '😠', '😡', '😢', '😣', '😤', '😥', '😦', '😧', '😨', '😩', '😪', '😫', '😬', '😭', '😮', '😯', '😰', '😱', '😲', '😳', '😴', '😵', '😶', '😷','🐸'],
+        booleanEmoji : false,
+        booleanSend : false,
     },
     methods : {
         //! this function add the local path to find the profile img
@@ -276,7 +279,7 @@ const app = new Vue({
                     this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: 'daje, asian fusion?', status : 'received'});
                     break;
                 case 'si':
-                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: ':D', status : 'received'});
+                    this.contacts[this.currentIndex].messages.push({date: this.getDate(), message: this.emojisArray[0], status : 'received'});
                     break;
                 default : 
                     console.log(newMessage);
@@ -290,7 +293,24 @@ const app = new Vue({
             this.contacts.splice(this.currentIndex, 1);
             this.contacts.unshift(currentObject);
             this.currentIndex = 0;
-        }, 
+        },
+        //! change the status of this boolean  for emoji
+        changeStatusEmoji(){
+            this.booleanEmoji = !this.booleanEmoji
+        },
+        //! Add at newMsgToAdd the clicked emoji
+        emojiToAdd(index){
+            this.newMsgToAdd += this.emojisArray[index]
+        },
+        //! if the new message is not empty change the status of this boolean in true
+        changeStatusSend(){
+            if(this.newMsgToAdd !=''){
+                this.booleanSend = true
+            }
+            else{
+                this.booleanSend = false
+            }
+        } 
     }
 })
 
